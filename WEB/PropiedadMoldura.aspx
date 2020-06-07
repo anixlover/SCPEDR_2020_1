@@ -28,13 +28,10 @@
 
                                         <asp:Image ID="Image1" Height="500px" Width="500px" runat="server" class="rounded" />
 
-                                        <%--<asp:FileUpload ID="FileUpload1" CssClass="btn btn-warning" runat="server" Width="100%" ClientIDMode="Static" />--%>
-                                        <input name="fileAnexo" type="file" id="FileUpload1" accept=".png,.jpg" class="btn btn-warning" style="width: 100%;" />
+                                        <input name="fileAnexo" type="file" id="FileUpload1" runat="server" accept=".png,.jpg" class="btn btn-warning" style="width: 100%;" />
                                         <br />
-                                        <%--<asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" />--%>
                                     </div>
                                     <div class="center">
-                                        <%--<asp:Button ID="btnPreview" CssClass="btn btn-warning" runat="server" Text="Previsualizar" OnClick="btnPreview_Click" />--%>
                                     </div>
                                 </div>
                                 <div class="col-sm-3"></div>
@@ -59,7 +56,7 @@
                                     <div class="row clearfix">
                                         <div class="col-sm-12">
                                             <label class="form-label">Tipo de moldura</label>
-                                            <asp:DropDownList ID="ddlTipoMoldura" class="form-control" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlTipoMoldura" class="form-control" runat="server" required></asp:DropDownList>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +67,9 @@
                                                 <label class="form-label">Medida</label>
                                                 <div class="form-line focused">
                                                     <div class="form-line">
-                                                        <asp:TextBox ID="txtMedida" class="form-control" runat="server"></asp:TextBox>
+                                                        <div class="form-line">
+                                                            <asp:TextBox ID="txtMedida" class="form-control" type="number" runat="server" required></asp:TextBox>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -83,7 +82,7 @@
                                     <div class="row clearfix">
                                         <div class="col-sm-12">
                                             <label class="form-label">Estado</label>
-                                            <asp:DropDownList runat="server" ID="ddlEstadoMoldura" CssClass="form-control" OnSelectedIndexChanged="ddlEstadoMoldura_SelectedIndexChanged">
+                                            <asp:DropDownList runat="server" ID="ddlEstadoMoldura" CssClass="form-control" OnSelectedIndexChanged="ddlEstadoMoldura_SelectedIndexChanged" required>
                                                 <asp:ListItem Value="">--Seleccione--</asp:ListItem>
                                                 <asp:ListItem Value="1">Habilitado</asp:ListItem>
                                                 <asp:ListItem Value="0">Deshabilitado</asp:ListItem>
@@ -98,7 +97,7 @@
                                                 <label class="form-label">Stock</label>
                                                 <div class="form-line focused">
                                                     <div class="form-line">
-                                                        <asp:TextBox ID="txtStock" class="form-control" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtStock" class="form-control" type="number" runat="server" required></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,7 +111,7 @@
                                                 <label class="form-label">Precio S/.</label>
                                                 <div class="form-line focused">
                                                     <div class="form-line">
-                                                        <asp:TextBox ID="txtPrecio" class="form-control" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtPrecio" type="number" class="form-control" runat="server" required></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -124,10 +123,10 @@
                                 <div class="col-lg-12">
                                     <div class="row clearfix">
                                         <div class="col-sm-12">
-                                            <div class="form-group">
+                                            <div class="form-group form-float">
                                                 <label class="form-label">Descripción</label>
-                                                <div class="form-line">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" TextMode="multiline" Rows="4" class="form-control no-resize"></asp:TextBox>
+                                                <div class="form-line focused">
+                                                    <asp:TextBox ID="txtDescripcion" runat="server" TextMode="multiline" Rows="4" class="form-control no-resize" required></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
@@ -145,8 +144,10 @@
                                 <div class="col-sm-3 right">
                                     <asp:UpdatePanel ID="upBotonEnviar" runat="server" UpdateMode="Conditional">
                                         <ContentTemplate>
-                                            <asp:Button ID="btnGuardar" runat="server" CssClass="btn bg-indigo waves-effect" Style="float: right" Width="100%" Text="Guardar"
-                                                OnClick="btnGuardar_Click"></asp:Button>
+                                            <asp:LinkButton ID="btnGuardar" runat="server" CssClass="btn bg-indigo waves-effect" Style="float: right" Width="100%" Text="Guardar"
+                                                OnClick="btnGuardar_Click">
+                                                <i class="material-icons">save</i> Guardar
+                                            </asp:LinkButton>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </div>
@@ -259,7 +260,18 @@
                 });
             }, 1000);
         }
-        
+
+        function getQueryStringParameter(paramToRetrieve) {
+            if (document.URL.split("?")[1] != undefined) {
+                var params = document.URL.split("?")[1].split("&");
+                var strParams = "";
+                for (var i = 0; i < params.length; i = i + 1) {
+                    var singleParam = params[i].split("=");
+                    if (singleParam[0] == paramToRetrieve)
+                        return singleParam[1].replace("#", "");
+                }
+            }
+        }
     </script>
 </asp:Content>
 

@@ -5,7 +5,26 @@
     <%--<link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />--%>
     <link href="../../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <script>$(function () {
-            $(".dataTable").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+    $(".dataTable").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
+        "bProcessing": false,
+        "bLengthChange": false,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Buscar registros",
+            lengthMenu: "Mostrar _MENU_ registros",
+            paginate: {
+                first: "Primero",
+                last: "&Uacute;ltimo",
+                next: "Siguiente",
+                previous: "Anterior"
+            },
+            
+        }, "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false,
+        responsive: true
+    });
         });</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_body" runat="Server">
@@ -22,17 +41,7 @@
                             <div class="header">
                                 <%--<h2>Programas actuales por sede</h2>--%>
                                 <ul class="header-dropdown m-r--5">
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                            <i class="material-icons">more_vert</i>
-                                        </a>
-                                        <ul class="dropdown-menu pull-right">
-                                            <li><a href="javascript:void(0);">Action</a></li>
-                                            <li><a href="javascript:void(0);">Another action</a></li>
-                                            <li><a href="javascript:void(0);">Something else here</a></li>
-                                        </ul>
-
-                                    </li>
+                                 
                                 </ul>
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -94,6 +103,18 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                     <div class="col-md-12">
+                                        <div class="row clearfix">
+                                            <div class="form-group form-float">
+                                                <label class="form-label">Stock :</label>
+                                                <div class="form-line focused">
+                                                    <div class="form-line">
+                                                        <asp:TextBox ID="txtStockModal" class="form-control" runat="server" ReadOnly></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="row clearfix">
                                             <div class="form-group form-float">
@@ -123,8 +144,6 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_Js" runat="Server">
     <script src="../../plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <%--<script src="../../js/pages/tables/jquery-datatable.js"></script>--%>
-
     <script src="../../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
     <script src="../../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
     <script src="../../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
@@ -134,13 +153,7 @@
     <script src="../../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
     <script src="../../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
-    <!-- Custom Js -->
-    <%--<script src="../../js/admin.js"></script>--%>
-    <%--  <script>
-        $('#gvCatalogo').dataTable({
-            destroy: true,
-            searching: false
-        });
-    </script>--%>
+
+    <script src="js/Aplicacion/CustomGestionarCatalogo.js"></script>
 </asp:Content>
 

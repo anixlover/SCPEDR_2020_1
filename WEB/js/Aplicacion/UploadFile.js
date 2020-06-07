@@ -1,4 +1,14 @@
-﻿function uploadFileDocuments(codigoMontura) {
+﻿$(document).ready(function () {
+    var Id = getQueryStringParameter("ID");
+    if (Id == undefined || Id == "") {
+        $("#cph_body_FileUpload1").prop('required', true);
+    } else {
+        $("#cph_body_FileUpload1").prop('required', false);
+
+    }
+});
+
+function uploadFileDocuments(codigoMontura) {
     var formData = new FormData();
     var varLstAnexo = ObtenerAnexos();
     debugger;
@@ -32,7 +42,7 @@
 function ObtenerAnexos() {
     var varAnexos = new Array();
     
-    var $targetval = $("#FileUpload1");
+    var $targetval = $("#cph_body_FileUpload1");
         var varDocumentoAnexo = $targetval.prop("files");
         if (!varDocumentoAnexo == false) {
             varAnexos.push(varDocumentoAnexo[0]);

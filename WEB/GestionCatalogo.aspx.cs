@@ -23,7 +23,7 @@ public partial class GestionCatalogo : System.Web.UI.Page
             try
             {
                 OpcionesTipoMoldura();
-
+                UpdatePanel.Update();
                 gvCatalogo.DataSource = objCtrMoldura.ListaMolduras();
                 gvCatalogo.DataBind();
             }
@@ -60,6 +60,7 @@ public partial class GestionCatalogo : System.Web.UI.Page
                 _log.CustomWriteOnLog("GestionCatalogo", "VBM_Imagen" + objDtoMoldura.VBM_Imagen);
 
                 txtDescripcionModal.Text = objDtoMoldura.VM_Descripcion;
+                txtStockModal.Text = objDtoMoldura.IM_Stock.ToString();
                 tituloModal.InnerText = Nombre.ToString();
 
                 #region ObtenerImagen

@@ -56,7 +56,7 @@ namespace DAO
             command.Parameters.AddWithValue("@idtipom", objmoldura.FK_ITM_Tipo);
             command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
             conexion.Open();
-            command.ExecuteNonQuery();
+            //command.ExecuteNonQuery();
 
             //SqlParameter retValue = new SqlParameter("@NewId", SqlDbType.Int).Direction=Par;
             //retValue.Direction = ParameterDirection.ReturnValue;
@@ -163,6 +163,7 @@ namespace DAO
             {
                 objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader[1].ToString());
                 objmoldura.VM_Descripcion = reader[1].ToString();
+                objmoldura.IM_Stock = int.Parse(reader[2].ToString());
             }
             conexion.Close();
             conexion.Dispose();

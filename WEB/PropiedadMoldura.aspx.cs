@@ -23,7 +23,7 @@ public partial class Prueba : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Form.Attributes.Add("enctype", "multipart/form-data");
+        
         Image1.Visible = false;
         txtPagina.InnerText = "Agregar moldura";
         if (!Page.IsPostBack)
@@ -35,6 +35,11 @@ public partial class Prueba : System.Web.UI.Page
                 txtPagina.InnerText = "Actualizar moldura";
 
                 obtenerInformacionMoldura(Request.Params["Id"]);
+
+            }
+            else
+            {
+                ddlEstadoMoldura.SelectedValue = "1";
             }
         }
     }
@@ -103,12 +108,15 @@ public partial class Prueba : System.Web.UI.Page
 
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
-        _log.CustomWriteOnLog("PropiedadMoldura", "Llego acá");
+        _log.CustomWriteOnLog("PropiedadMoldura", "-------------------------------------------------------------Evento Click-----------------------");
+        _log.CustomWriteOnLog("PropiedadMoldura", "Entró a evento de ingreso ");
         try
         {
 
             if (Request.Params["Id"] != null)
             {
+                _log.CustomWriteOnLog("PropiedadMoldura", "La función es de actualización");
+
                 objDtoMoldura.PK_IM_Cod = int.Parse(Request.Params["Id"]);
                 _log.CustomWriteOnLog("PropiedadMoldura", "txtTipoMoldura = " + ddlTipoMoldura.SelectedValue);
                 _log.CustomWriteOnLog("PropiedadMoldura", "ddlEstadoMoldura = " + ddlEstadoMoldura.SelectedValue);
@@ -131,6 +139,7 @@ public partial class Prueba : System.Web.UI.Page
             }
             else
             {
+                _log.CustomWriteOnLog("PropiedadMoldura", "La función es de creación");
                 objDtoMoldura.DM_Precio = Double.Parse(txtPrecio.Text);
                 objDtoMoldura.IM_Estado = int.Parse(ddlEstadoMoldura.SelectedValue);
                 objDtoMoldura.IM_Stock = int.Parse(txtStock.Text);
@@ -140,9 +149,10 @@ public partial class Prueba : System.Web.UI.Page
                 objCtrMoldura.registrarNuevaMoldura(objDtoMoldura);
                 int ValorDevuelto = objDtoMoldura.PK_IM_Cod;
                 _log.CustomWriteOnLog("PropiedadMoldura", "PK_IM_Cod valor retornado " + objDtoMoldura.PK_IM_Cod);
+                Utils.AddScriptClientUpdatePanel(upBotonEnviar, "uploadFileDocuments(" + objDtoMoldura.PK_IM_Cod + ");");
                 _log.CustomWriteOnLog("PropiedadMoldura", "Agregado");
                 Utils.AddScriptClientUpdatePanel(upBotonEnviar, "showSuccessMessage2()");
-                _log.CustomWriteOnLog("PropiedadMoldura", "Salio");
+                _log.CustomWriteOnLog("PropiedadMoldura", "Completado");
             }
 
 
@@ -157,7 +167,7 @@ public partial class Prueba : System.Web.UI.Page
 
     protected void btnCancelar_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("~/GestionCatalogo.aspx");
     }
 
     protected void ddlEstadoMoldura_SelectedIndexChanged(object sender, EventArgs e)
