@@ -39,7 +39,9 @@ public partial class Prueba : System.Web.UI.Page
             }
             else
             {
+                PanelO.Visible = false;
                 ddlEstadoMoldura.SelectedValue = "1";
+                
             }
         }
     }
@@ -103,6 +105,17 @@ public partial class Prueba : System.Web.UI.Page
         txtMedida.Text = objDtoMoldura.DM_Medida.ToString();
         ddlEstadoMoldura.SelectedValue = objDtoMoldura.IM_Estado.ToString();
         txtDescripcion.Text = objDtoMoldura.VM_Descripcion;
+        txtUnidadMetrica.Text = objDtoTipoMoldura.VTM_UnidadMetrica;
+        //try
+        //{
+        //    txtUnidadMetrica.Text= objCtrMoldura._ObtenerUnidadMetrica(objDtoTipoMoldura);
+        //}
+        //catch (Exception ex)
+        //{
+
+        //    _log.CustomWriteOnLog("PropiedadMoldura", "Error:"+ex.Message);
+        //}
+        
 
     }
 
@@ -168,6 +181,13 @@ public partial class Prueba : System.Web.UI.Page
     protected void btnCancelar_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/GestionCatalogo.aspx");
+    }
+    protected void ddlTipoMoldura_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _log.CustomWriteOnLog("PropiedadMoldura", "cambia tipo" );
+        objDtoTipoMoldura.PK_ITM_Tipo = Convert.ToInt32(ddlTipoMoldura.SelectedIndex.ToString());
+        txtUnidadMetrica.Text = "";
+        txtUnidadMetrica.Text = objCtrMoldura._ObtenerUnidadMetrica(objDtoTipoMoldura);
     }
 
     protected void ddlEstadoMoldura_SelectedIndexChanged(object sender, EventArgs e)

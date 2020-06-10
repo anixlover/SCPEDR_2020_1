@@ -168,6 +168,26 @@ namespace DAO
             conexion.Close();
             conexion.Dispose();
         }
-
+        public string obtenerUnidadMetrica(DtoTipoMoldura objtipo)
+        {
+            SqlCommand command = new SqlCommand("SP_Obtener_Unidad_Metrica", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Id", objtipo.PK_ITM_Tipo);
+            DataSet ds = new DataSet();
+            conexion.Open();
+            SqlDataAdapter moldura = new SqlDataAdapter(command);
+            moldura.Fill(ds);
+            moldura.Dispose();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                objtipo.VTM_UnidadMetrica = reader[0].ToString();
+            }
+            string valor = "";
+            valor = objtipo.VTM_UnidadMetrica;
+            conexion.Close();
+            conexion.Dispose();
+            return valor;
+        }
     }
 }

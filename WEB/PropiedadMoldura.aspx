@@ -37,38 +37,97 @@
                                 <div class="col-sm-3"></div>
 
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="row clearfix">
-                                        <div class="col-sm-12">
-                                            <div class="form-group form-float">
-                                                <label class="form-label">Codigo</label>
-                                                <div class="form-line focused">
-                                                    <div class="form-line">
-                                                        <asp:TextBox ID="txtCodigo" class="form-control" runat="server" ReadOnly></asp:TextBox>
+                            <asp:Panel runat="server" ID="PanelO">
+                                <div class="row" id="ocultar">
+
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-float">
+                                                    <label class="form-label">Codigo</label>
+                                                    <div class="form-line focused">
+                                                        <div class="form-line">
+                                                            <asp:TextBox ID="txtCodigo" class="form-control" runat="server" ReadOnly></asp:TextBox>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <label class="form-label">Estado</label>
+                                                <asp:DropDownList runat="server" ID="ddlEstadoMoldura" CssClass="form-control" OnSelectedIndexChanged="ddlEstadoMoldura_SelectedIndexChanged" required>
+                                                    <asp:ListItem Value="">--Seleccione--</asp:ListItem>
+                                                    <asp:ListItem Value="1">Habilitado</asp:ListItem>
+                                                    <asp:ListItem Value="0">Deshabilitado</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </asp:Panel>
+                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="row clearfix">
                                         <div class="col-sm-12">
                                             <label class="form-label">Tipo de moldura</label>
-                                            <asp:DropDownList ID="ddlTipoMoldura" class="form-control" runat="server" required></asp:DropDownList>
+                                            <asp:UpdatePanel runat="server">
+                                                <ContentTemplate>
+                                                    <asp:DropDownList ID="ddlTipoMoldura" class="form-control" runat="server" OnSelectedIndexChanged="ddlTipoMoldura_SelectedIndexChanged" required AutoPostBack="True"></asp:DropDownList>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="row clearfix">
-                                        <div class="col-sm-12">
-                                            <div class="form-group form-float">
-                                                <label class="form-label">Medida</label>
-                                                <div class="form-line focused">
-                                                    <div class="form-line">
-                                                        <div class="form-line">
-                                                            <asp:TextBox ID="txtMedida" class="form-control" type="number" runat="server" required></asp:TextBox>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row clearfix">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group form-float">
+                                                        <label class="form-label">Unidad Metrica</label>
+                                                        <div class="form-line focused">
+                                                            <div class="form-line">
+                                                                <div class="form-line">
+                                                                    <asp:UpdatePanel runat="server">
+                                                                        <ContentTemplate>
+                                                                            <asp:TextBox ID="txtUnidadMetrica" class="form-control" runat="server" ReadOnly></asp:TextBox>
+                                                                        </ContentTemplate>
+                                                                    </asp:UpdatePanel>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row clearfix">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group form-float">
+                                                        <label class="form-label">Medida</label>
+                                                        <div class="form-line focused">
+                                                            <div class="form-line">
+                                                                <div class="form-line">
+                                                                    <asp:TextBox ID="txtMedida" class="form-control" type="number" runat="server" required></asp:TextBox>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row clearfix">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group form-float">
+                                                        <label class="form-label">Stock</label>
+                                                        <div class="form-line focused">
+                                                            <div class="form-line">
+                                                                <asp:TextBox ID="txtStock" class="form-control" type="number" runat="server" required></asp:TextBox>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -76,62 +135,38 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4">
-                                    <div class="row clearfix">
-                                        <div class="col-sm-12">
-                                            <label class="form-label">Estado</label>
-                                            <asp:DropDownList runat="server" ID="ddlEstadoMoldura" CssClass="form-control" OnSelectedIndexChanged="ddlEstadoMoldura_SelectedIndexChanged" required>
-                                                <asp:ListItem Value="">--Seleccione--</asp:ListItem>
-                                                <asp:ListItem Value="1">Habilitado</asp:ListItem>
-                                                <asp:ListItem Value="0">Deshabilitado</asp:ListItem>
-                                            </asp:DropDownList>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row clearfix">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group form-float">
+                                                        <label class="form-label">Descripción</label>
+                                                        <div class="form-line focused">
+                                                            <asp:TextBox ID="txtDescripcion" runat="server" TextMode="multiline" Rows="4" class="form-control no-resize" required></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="row clearfix">
-                                        <div class="col-sm-12">
-                                            <div class="form-group form-float">
-                                                <label class="form-label">Stock</label>
-                                                <div class="form-line focused">
-                                                    <div class="form-line">
-                                                        <asp:TextBox ID="txtStock" class="form-control" type="number" runat="server" required></asp:TextBox>
+                                        <div class="col-md-12">
+                                            <div class="row clearfix">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group form-float">
+                                                        <label class="form-label">Precio S/.</label>
+                                                        <div class="form-line focused">
+                                                            <div class="form-line">
+                                                                <asp:TextBox ID="txtPrecio" type="number" class="form-control" runat="server" required></asp:TextBox>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="row clearfix">
-                                        <div class="col-sm-12">
-                                            <div class="form-group form-float">
-                                                <label class="form-label">Precio S/.</label>
-                                                <div class="form-line focused">
-                                                    <div class="form-line">
-                                                        <asp:TextBox ID="txtPrecio" type="number" class="form-control" runat="server" required></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="row clearfix">
-                                        <div class="col-sm-12">
-                                            <div class="form-group form-float">
-                                                <label class="form-label">Descripción</label>
-                                                <div class="form-line focused">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" TextMode="multiline" Rows="4" class="form-control no-resize" required></asp:TextBox>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+
                             </div>
                             <div class="row">
                                 <div class="col-sm-3 right">
@@ -272,6 +307,8 @@
                 }
             }
         }
+
     </script>
+
 </asp:Content>
 

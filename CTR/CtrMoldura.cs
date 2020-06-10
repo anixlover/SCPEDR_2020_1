@@ -55,7 +55,10 @@ namespace CTR
         {
             return objDaoMoldura.ListarMoldurasByTipoMoldura(objDtoTipoMoldura);
         }
-
+        public string _ObtenerUnidadMetrica(DtoTipoMoldura objDtoTipoMoldura)
+        {
+            return objDaoMoldura.obtenerUnidadMetrica(objDtoTipoMoldura);
+        }
 
     }
 }
