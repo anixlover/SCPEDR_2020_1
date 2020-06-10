@@ -24,8 +24,19 @@ public partial class GestionCatalogo : System.Web.UI.Page
             {
                 OpcionesTipoMoldura();
                 UpdatePanel.Update();
-                gvCatalogo.DataSource = objCtrMoldura.ListaMolduras();
-                gvCatalogo.DataBind();
+                DataTable Test= objCtrMoldura.ListaMolduras();
+                _log.CustomWriteOnLog("GestionCatalogo", "Error = "+Test.Rows.Count);
+                if (Test.Rows.Count != 0)
+                {
+                    gvCatalogo.DataSource = Test;
+                    gvCatalogo.DataBind();
+
+                }
+                else
+                {
+                    
+                }
+                
             }
             catch (Exception ex)
             {
@@ -136,13 +147,13 @@ public partial class GestionCatalogo : System.Web.UI.Page
         {
             if (ddl_TipoMoldura.SelectedValue != "0")
             {
-                _log.CustomWriteOnLog("GestionarCatalogo", "Entro a busqueda");
+                _log.CustomWriteOnLog("GestionCatalogo", "Entro a busqueda");
                 objDtoTipoMoldura.PK_ITM_Tipo = int.Parse(ddl_TipoMoldura.SelectedValue);
-                _log.CustomWriteOnLog("GestionarCatalogo", "objDtoTipoMoldura.PK_ITM_Tipo : "+ objDtoTipoMoldura.PK_ITM_Tipo);
+                _log.CustomWriteOnLog("GestionCatalogo", "objDtoTipoMoldura.PK_ITM_Tipo : "+ objDtoTipoMoldura.PK_ITM_Tipo);
                 UpdatePanel.Update();
                 gvCatalogo.DataSource = objCtrMoldura.ListarMoldurasByTipoMoldura(objDtoTipoMoldura);
                 gvCatalogo.DataBind();
-                _log.CustomWriteOnLog("GestionarCatalogo", "Paso");
+                _log.CustomWriteOnLog("GestionCatalogo", "Paso");
             }
             else
             {
@@ -154,7 +165,7 @@ public partial class GestionCatalogo : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            _log.CustomWriteOnLog("GestionarCatalogo", "Error busqueda :" +ex.Message);
+            _log.CustomWriteOnLog("GestionCatalogo", "Error busqueda :" +ex.Message);
 
             throw;
         }

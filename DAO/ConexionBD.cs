@@ -13,7 +13,10 @@ namespace DAO
         {
             get
             {
-                return @"data source=ALE\SQLEXPRESS; initial catalog=BD_SCPEDR; integrated security=SSPI;";
+                //Conexion Alexandra
+                //return @"data source=ALE\SQLEXPRESS; initial catalog=BD_SCPEDR; integrated security=SSPI;";
+                //Conexion Marcial
+                return @"data source=LAPTOP-UEI1JFVM; initial catalog=BD_SCPEDR; integrated security=SSPI;";
             }
         }
     }

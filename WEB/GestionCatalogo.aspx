@@ -62,7 +62,9 @@
                             </div>
                             <div class="body table-responsive ">
 
-                                <asp:GridView ID="gvCatalogo" CssClass="table table-bordered table-hover js-basic-example dataTable" DataKeyNames="PK_IM_Cod,VTM_Nombre" runat="server" OnRowDataBound="gvCatalogo_RowDataBound" AutoGenerateColumns="False" EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" OnRowCommand="gvCatalogo_RowCommand">
+                                <asp:GridView ID="gvCatalogo" CssClass="table table-bordered table-hover js-basic-example dataTable" PagerStyle-CssClass="pgr"  AutoGenerateColumns="False" GridLines="None"
+                                    AlternatingRowStyle-CssClass="alt" DataKeyNames="PK_IM_Cod,VTM_Nombre" runat="server" OnRowDataBound="gvCatalogo_RowDataBound" 
+                                    EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" OnRowCommand="gvCatalogo_RowCommand"  PageSize="9">
                                     <Columns>
                                         <asp:BoundField DataField="PK_IM_Cod" HeaderText="Codigo" />
                                         <asp:BoundField DataField="VTM_Nombre" HeaderText="Tipo de moldura" />
