@@ -2513,7 +2513,8 @@ section.content {
 .btn-danger:hover,
 .btn-danger:active,
 .btn-danger:focus {
-  background-color: #fb483a !important; }
+    background-color: #BC3041 !important;
+}
 
 .btn-info,
 .btn-info:hover,
