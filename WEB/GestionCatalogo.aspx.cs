@@ -25,7 +25,7 @@ public partial class GestionCatalogo : System.Web.UI.Page
                 OpcionesTipoMoldura();
                 UpdatePanel.Update();
                 DataTable Test= objCtrMoldura.ListaMolduras();
-                _log.CustomWriteOnLog("GestionCatalogo", "Error = "+Test.Rows.Count);
+                _log.CustomWriteOnLog("GestionCatalogo", "Contador de gridview = "+Test.Rows.Count);
                 if (Test.Rows.Count != 0)
                 {
                     gvCatalogo.DataSource = Test;
