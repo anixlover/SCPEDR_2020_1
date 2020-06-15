@@ -13,7 +13,7 @@ namespace DAO
         {
             get
             {
-                return @"data source=DESKTOP-4LVLNRM; initial catalog=BD_SCPEDR; integrated security=SSPI;";
+                return @"data source=LAPTOP-UEI1JFVM; initial catalog=BD_SCPEDR; integrated security=SSPI;";
             }
         }
     }

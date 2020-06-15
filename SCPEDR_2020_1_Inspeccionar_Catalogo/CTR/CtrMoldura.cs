@@ -55,7 +55,10 @@ namespace CTR
         {
             return objDaoMoldura.ListarMoldurasByTipoMoldura(objDtoTipoMoldura);
         }
-
-
+        public DataTable ListarMoldurasPaginaInicial(DtoTipoMoldura objDtoTipoMoldura)
+        {
+            return objDaoMoldura.ListarMoldurasPaginaInicial(objDtoTipoMoldura);
+        }
+        
     }
 }

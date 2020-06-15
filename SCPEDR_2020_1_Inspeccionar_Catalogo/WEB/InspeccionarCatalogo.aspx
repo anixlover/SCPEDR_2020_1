@@ -35,18 +35,17 @@
     <link href="css/main.css" rel="stylesheet" />
 
     <meta name="theme-color" content="#fafafa">
+	<link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+	<link href="plugins/node-waves/waves.css" rel="stylesheet" />
+	<link href="plugins/animate-css/animate.css" rel="stylesheet" />
+	<link href="plugins/morrisjs/morris.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet"/>
+	<link href="css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
 <body>
-
     <form id="form1" runat="server">
-
-        <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-
-        <!-- Add your site or application content here -->
-
+        <asp:ScriptManager runat="server"></asp:ScriptManager>
         <header class="site-header">
             <div class="hero">
                 <div class="contenido-header">
@@ -74,7 +73,7 @@
         <div class="barra">
             <div class="contenedor clearfix">
                 <div class="logo">
-                    <img loading="lazy" src="img/logo1.svg" alt="logo decormolduras">
+                    <img src="img/logo1.svg" alt="logo decormolduras">
                 </div>
                 <div class="menu-movil">
                     <span></span>
@@ -92,74 +91,40 @@
             <!--.contenedor-->
         </div>
         <!--.barra-->
-        
 
-<section class="seccion contenedor clearfix">
-    <h2>Catalogo</h2>
-      <div class="contenedor-molduras">
-        <div class="categorias" id="categorias">
-        <a href="#" class="activo">Todos</a>
-        <a href="#">Baqueton Calsico</a>
-        <a href="#">Baqueton Decorado</a>
-        <a href="#">Roseton Clasico</a>
-        <a href="#">Roseton Decorado</a>
-        <a href="#">Cornisa Clasica</a>
-        <a href="#">Cornisa Decorada</a>
-        <a href="#">Placa 3D</a>
-        </div>
-      </div>
 
-      <div class="lista-moldura-tipo">
-
-        <ul class="lista-moldura-tipo clearfix">
-          <li>
-            <div class="tipo-moldura">
-              <img loading="lazy" src="img/RC_1.jpg" alt="">
-              <p>Mide: 40 cm</p>
-              <p>Precio: S./120.00</p>
-              <a href="#" class="button">Detalles</a>
+        <section class="seccion contenedor clearfix">
+            <h2>Catalogo</h2>
+            <div class="contenedor-molduras">
+                <div class="categorias" id="categorias">
+                    <asp:UpdatePanel runat="server" ID="updOpcionesMolduras">
+                        <ContentTemplate>
+                            <asp:LinkButton runat="server" ID="btnTodos" OnClick="btnTodos_Click">Todos</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnBaquetonClasico" OnClick="btnBaquetonClasico_Click">Baqueton Calsico</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnBaquetonDecorado" OnClick="btnBaquetonDecorado_Click">Baqueton Decorado</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnRosetonClasico" OnClick="btnRosetonClasico_Click">Roseton Clasico</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnRosetonDecorado" OnClick="btnRosetonDecorado_Click">Roseton Decorado</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnCornisaClasica" OnClick="btnCornisaClasica_Click">Cornisa Clasica</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnCornisaDecorada" OnClick="btnCornisaDecorada_Click">Cornisa Decorada</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnPlaca3D" OnClick="btnPlaca3D_Click">Placa 3D</asp:LinkButton>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
             </div>
-          </li>
-          <li>
-            <div class="tipo-moldura">
-              <img loading="lazy" src="img/CC_1.JPG" alt="">
-              <p>Mide: 60cm</p>
-              <p>Precio: S./180.00</p>
-              <a href="#" class="button">Detalles</a>
+
+            <div class="lista-moldura-tipo">
+
+
+                <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Always">
+                    <ContentTemplate>
+                        <ul class="lista-moldura-tipo clearfix" id="ListaMoldura" runat="server">
+                        </ul>
+
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
-          </li>
-          <li>
-            <div class="tipo-moldura">
-              <img loading="lazy" src="img/BC_1.JPG" alt="">
-              <p>Mide: 1m</p>
-              <p>Precio: S./20.00</p>
-              <a href="#" class="button">Detalles</a>
-            </div>
-          </li>
-          
-          <li>
-            <div class="tipo-moldura">
-              <img loading="lazy" src="img/BC_1.JPG" alt="">
-              <p>Mide: 1m</p>
-              <p>Precio: S./20.00</p>
-              <a href="#" class="button">Detalles</a>
-            </div>
-          </li>
-        </ul>
-        
-      </div>
 
-    </div>
-
-</section>
-
-
-
-
-
-
-
-
+        </section>
 
         <footer class="site-footer">
             <div class="contenedor clearfix">
@@ -184,14 +149,145 @@
 
         </footer>
 
+         <div class="modal fade" id="defaultmodal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <%--<asp:UpdatePanel runat="server" ID="updPanelModal" UpdateMode="Always">
+                        <ContentTemplate>--%>
+                            <div class="modal-header navbar">
+                                <h4 class="modal-title" id="tituloModal" runat="server" style="color: white;"></h4>
+                            </div>
+                            <div class="modal-body">
 
+                                <div class="row">
+                                    <div class="text-center">
+                                        <asp:Image ID="ImageFile" Height="300px" Width="300px" runat="server" class="rounded" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="form-group form-float">
+                                                <label class="form-label">Medida :</label>
+                                                <div class="form-line focused">
+                                                    <div class="form-line">
+                                                        <asp:TextBox ID="txtMedidaModal" class="form-control" runat="server" ReadOnly></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="form-group form-float">
+                                                <label class="form-label">Unidad metrica :</label>
+                                                <div class="form-line focused">
+                                                    <div class="form-line">
+                                                        <asp:TextBox ID="txtUnidadMetricaModal" class="form-control" runat="server" ReadOnly></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="form-group form-float">
+                                                <label class="form-label">Precio :</label>
+                                                <div class="form-line focused">
+                                                    <div class="form-line">
+                                                        <asp:TextBox ID="txtPrecioModal" class="form-control" runat="server" ReadOnly></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="form-group form-float">
+                                                <label class="form-label">Descripción :</label>
+                                                <div class="form-line focused">
+                                                    <div class="form-line">
+                                                        <asp:TextBox ID="txtDescripcionModal" class="form-control" runat="server" ReadOnly></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cerrar</button>
+                            </div>
+                   <%--     </ContentTemplate>
+                    </asp:UpdatePanel>--%>
+                </div>
+            </div>
+        </div>
 
         <!--programa-->
 
 
         <script src="js/vendor/modernizr-3.8.0.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <%--<script src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>--%>
+        
+	<script src="plugins/jquery/jquery.min.js"></script>
+
+        	<script src="plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core Js -->
+	<script src="plugins/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Select Plugin Js -->
+	<script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+	<!-- Slimscroll Plugin Js -->
+	<script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+	<!-- Waves Effect Plugin Js -->
+	<script src="plugins/node-waves/waves.js"></script>
+
+	<!-- Jquery CountTo Plugin Js -->
+	<script src="plugins/jquery-countto/jquery.countTo.js"></script>
+
+	<!-- Morris Plugin Js -->
+	<script src="plugins/raphael/raphael.min.js"></script>
+	<script src="plugins/morrisjs/morris.js"></script>
+
+	<!-- ChartJs -->
+	<script src="plugins/chartjs/Chart.bundle.js"></script>
+
+	<!-- Flot Charts Plugin Js -->
+	<script src="plugins/flot-charts/jquery.flot.js"></script>
+	<script src="plugins/flot-charts/jquery.flot.resize.js"></script>
+	<script src="plugins/flot-charts/jquery.flot.pie.js"></script>
+	<script src="plugins/flot-charts/jquery.flot.categories.js"></script>
+	<script src="plugins/flot-charts/jquery.flot.time.js"></script>
+
+	<!-- Sparkline Chart Plugin Js -->
+	<script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+	<!-- Custom Js -->
+	<script src="js/admin.js"></script>
+	<script src="js/pages/index.js"></script>
+
+	<!-- Demo Js -->
+	<script src="js/demo.js"></script>
+        <script>
+            function cargarInformacionModal(PK_IM_Cod) {
+                //$('#txtMedidaModal').val(medida);
+                //$('#txtUnidadMetricaModal').val(unidad);
+                //$('#txtPrecioModal').val(precio);
+                //$('#txtDescripcionModal').val(descripcion);
+                alert("Informacion del pk " + PK_IM_Cod);
+
+                //$('#ImageFile').attr("src", imagen);
+                $('#defaultmodal').modal({ show: true });
+
+            }
+        </script>
+
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>

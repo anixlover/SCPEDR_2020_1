@@ -169,5 +169,47 @@ namespace DAO
             conexion.Dispose();
         }
 
+        public void ObtenerMoldurasxTipoMoldura(DtoMoldura objmoldura, DtoTipoMoldura objtipo)
+        {
+            SqlCommand command = new SqlCommand("SP_Detalles_Moldura_by_TipoMoldura", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@codMol", objmoldura.PK_IM_Cod);
+            DataSet ds = new DataSet();
+            conexion.Open();
+            SqlDataAdapter moldura = new SqlDataAdapter(command);
+            moldura.Fill(ds);
+            moldura.Dispose();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                objmoldura.PK_IM_Cod = int.Parse(reader[0].ToString());
+                objmoldura.VM_Descripcion = reader[1].ToString();
+                objtipo.PK_ITM_Tipo = int.Parse(reader[2].ToString());
+                objtipo.VTM_Nombre = reader[3].ToString();
+                objmoldura.DM_Medida = Convert.ToDouble(reader[4].ToString());
+                objtipo.VTM_UnidadMetrica = reader[5].ToString();
+                objmoldura.IM_Estado = int.Parse(reader[6].ToString());
+                objmoldura.IM_Stock = int.Parse(reader[7].ToString());
+                objmoldura.DM_Precio = Convert.ToDouble(reader[8].ToString());
+                objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader[9].ToString());
+            }
+            conexion.Close();
+            conexion.Dispose();
+        }
+        public DataTable ListarMoldurasPaginaInicial(DtoTipoMoldura objtipo)
+        {
+            DataTable dtmolduras = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Detalles_Moldura_by_TipoMoldura", conexion);
+            command.Parameters.AddWithValue("@idTipoMold", objtipo.PK_ITM_Tipo);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dtmolduras = new DataTable();
+            daAdaptador.Fill(dtmolduras);
+            conexion.Close();
+            return dtmolduras;
+        }
     }
 }
