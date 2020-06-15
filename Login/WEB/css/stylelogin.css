@@ -1,19 +1,19 @@
-#body{
+#body {
     background-color: #330503;
 }
 
-#body h1{
-    font-family: sans-serif;
-}
+    #body h1 {
+        font-family: sans-serif;
+    }
 
-img{
+img {
     padding: 30px;
     width: 150px;
     display: block;
     margin: auto;
 }
 
-#tittle{
+#tittle {
     color: white;
     text-align: center;
     margin-top: 10px;
@@ -26,20 +26,20 @@ img{
     font-family: sans-serif;
     position: relative;
 }
-.username-input{
-    text-align: center;
 
+.username-input {
+    text-align: center;
 }
 
-.password-input{
+.password-input {
     text-align: center;
     position: relative;
 }
 
-.form-id input{
+.form-id input {
     width: 540px;
     height: 90%;
-    color:white;
+    color: white;
     font-size: 20px;
     padding-top: 30px;
     border: none;
@@ -49,49 +49,48 @@ img{
     margin: 10px;
 }
 
-.form-id .label-name{
+.form-id .label-name {
     position: absolute;
     bottom: 122px;
-    color:white;
+    color: white;
     font-size: 18px;
     padding-left: 15px;
 }
 
-.form-id .label-name::after{
-    content:" ";
-    position: absolute;
-    left: 10px;
-    bottom: -33px;
-    height: 0%;
-    width: 550px;
-    border-bottom: 10px solid white;
-}
+    .form-id .label-name::after {
+        content: " ";
+        position: absolute;
+        left: 10px;
+        bottom: -33px;
+        height: 0%;
+        width: 550px;
+        border-bottom: 2px solid white;
+    }
 
 
-.form-id .label-name2{
+.form-id .label-name2 {
     position: absolute;
     bottom: 45px;
-    color:white;
+    color: white;
     font-size: 18px;
     padding-left: 15px;
 }
 
-.form-id .label-name2 ::after{
-    content:"";
-    position: absolute;
-    left:10px;
-    bottom: -35px;
-    height: 0px;
-    width: 550px;
-    border-bottom: 2px solid white;
+    .form-id .label-name2::after {
+        content: "";
+        position: absolute;
+        left: 10px;
+        bottom: -35px;
+        height: 0px;
+        width: 550px;
+        border-bottom: 2px solid white;
+    }
+
+.button {
+    text-align: center;
 }
 
-/*.button{
-    text-align: center;
-
-}*/
-
-/*.button input[type=submit] {
+    .button input[type=submit] {
         text-align: center;
         border: none;
         position: relative;
@@ -104,11 +103,16 @@ img{
         letter-spacing: 0.5px;
         border-radius: 40px;
         background: #922924;
-        padding: 14px 255px;
-    }*/
+        padding: 15px 240px;
+    }
 
-/*.Log-in-button{
-    text-align:center;
+/*.Login-button3 {
+    text-align: left;
+}*/
+
+
+/*.Login-button3 {
+    text-align: left;
     border: none;
     position: relative;
     display: inline-block;
@@ -117,18 +121,18 @@ img{
     color: white;
     text-decoration: none;
     font-size: 18px;
-    letter-spacing: 0.5px ;
+    letter-spacing: 0.5px;
     border-radius: 40px;
     background: #922924;
     padding: 14px 255px;
 }*/
 
-/*.Log-in-button span{
+/*.Log-in-button span {
     font-size: 15px;
     font-family: sans-serif;
-}
+}*/
 
-.forgot span{
+/*.forgot span{
     text-align: center;
     position: relative;
     top: 10px;

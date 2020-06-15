@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/stylelogin.css" rel="stylesheet" />
+
     <%--top tag--%>
     <title>Iniciar Sesion</title>
 </head>
@@ -31,7 +32,10 @@
                 </div>
                 <%--input pass--%>
                 <div class="form-group">
-                    <label for="exampleInputPassword1" class="label-name2">Contraseña</label>
+                    <label for="exampleInputPassword1" class="label-name2">
+                        Contraseña
+
+                    </label>
                     <asp:TextBox ID="txtContraseña" type="password"
                         CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
@@ -46,7 +50,7 @@
 
         <%--button succes--%>
         <div class="button">
-            <asp:Button ID="btnLogin" runat="server" CssClass="Log-in-button" type="submit"
+            <asp:Button ID="btnLogin" runat="server" Class="Login-button" type="submit"
                 Text="Ingresar" OnClick="btnLogin_Click" />
         </div>
     </form>
