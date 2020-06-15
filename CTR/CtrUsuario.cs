@@ -98,6 +98,8 @@ namespace CTR
             }
             objUsuarioDao.InsertarCliente(Objusuario);
             Objusuario.error = 77;
+
+            //bueno se realizo cambios, no recuerdo, solo quiero subir este version
         }
     }
 }

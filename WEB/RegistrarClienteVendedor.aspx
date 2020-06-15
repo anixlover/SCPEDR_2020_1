@@ -7,7 +7,7 @@
             <form id="form2" runat="server">
         
         <div id="cuadro">       
-            <img width=100% height="135"  src="images/Portada.png" >                
+            <img width=100% height="135"  src="images/Portada.png" >     
         </div>        
         <div id="cuadro" class="titulos"> 
         <h1>REGISTRAR CLIENTE</h1>
