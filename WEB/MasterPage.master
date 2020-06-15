@@ -22,6 +22,11 @@
     <link href="../../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 
     <!-- Custom Css -->
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="../../plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="../../plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 
@@ -219,6 +224,7 @@
     <script src="../../plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
     <script src="../../plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="../../plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script src="../../js/admin.js"></script>
     <script src="../../js/pages/ui/tooltips-popovers.js"></script>
     <%--<script src="../../js/pages/forms/basic-form-elements.js"></script>--%>
