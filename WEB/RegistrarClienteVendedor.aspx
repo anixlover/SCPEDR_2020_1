@@ -29,7 +29,7 @@
                                                 <label class="form-label">DNI </label>
                                                 <div class="form-line ">
                                                     <div class="form-line">
-                                                        <asp:TextBox ID="txtDNI" class="form-control" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtDNI" class="form-control" runat="server"  type="number"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,7 +129,7 @@
                                                 <label class="form-label">Contraseña</label>
                                                 <div class="form-line ">
                                                     <div class="form-line">
-                                                        <asp:TextBox ID="txtContrasenia" class="form-control" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtContrasenia" class="form-control" runat="server" type="password"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
