@@ -11,10 +11,10 @@ namespace CTR
 {
     public class CtrUsuario
     {
-        DaoUsuario objUsuarioDao;
+        DaoUsuario objDaoUsuario;
         public CtrUsuario()
         {
-            objUsuarioDao = new DaoUsuario();
+            objDaoUsuario = new DaoUsuario();
         }
         public void RegistrarUsuario(DtoUsuario Objusuario)
         {
@@ -74,7 +74,7 @@ namespace CTR
             }
             DtoUsuario objuser2 = new DtoUsuario();
             objuser2.PK_VU_Dni = Objusuario.PK_VU_Dni;
-            correcto = !objUsuarioDao.SelectUsuario(objuser2);
+            correcto = !objDaoUsuario.SelectUsuario(objuser2);
             if (!correcto)
             {
                 Objusuario.error = 5;
@@ -82,7 +82,7 @@ namespace CTR
             }
             DtoUsuario objuser3 = new DtoUsuario();
             objuser3.IU_Celular = Objusuario.IU_Celular;
-            correcto = !objUsuarioDao.SelectUsuarioXcelular(objuser3);
+            correcto = !objDaoUsuario.SelectUsuarioXcelular(objuser3);
             if (!correcto)
             {
                 Objusuario.error = 6;
@@ -90,13 +90,13 @@ namespace CTR
             }
             DtoUsuario objuser4 = new DtoUsuario();
             objuser3.VU_Correo = Objusuario.VU_Correo;
-            correcto = !objUsuarioDao.SelectUsuarioXcorreo(objuser4);
+            correcto = !objDaoUsuario.SelectUsuarioXcorreo(objuser4);
             if (!correcto)
             {
                 Objusuario.error = 7;
                 return;
             }
-            objUsuarioDao.InsertarCliente(Objusuario);
+            objDaoUsuario.InsertarCliente(Objusuario);
             Objusuario.error = 77;
         }
     }

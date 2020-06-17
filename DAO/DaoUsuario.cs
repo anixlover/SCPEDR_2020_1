@@ -19,13 +19,18 @@ namespace DAO
         }
         public void InsertarCliente(DtoUsuario ObjUsuario)
         {
-            string Insertar = "INSERT T_Usuario(PK_VU_Dni,VU_Nombre,VU_Apellidos,IU_Celular,DTU_FechaNac,VU_Correo,VU_Contrasenia,FK_ITU_Cod) VALUES(" + ObjUsuario.PK_VU_Dni + ",'" + ObjUsuario.VU_Nombre + "','" + 
-                ObjUsuario.VU_Apellidos + "'," + ObjUsuario.IU_Celular + ", CONVERT(SMALLDATETIME, '"+ ObjUsuario.DTU_FechaNac +"') ,'" + ObjUsuario.VU_Correo + "','" + ObjUsuario.VU_Contraseña + "',1)";
-
-            SqlCommand unComando = new SqlCommand(Insertar, conexion);
+            SqlCommand command = new SqlCommand("SP_Registrar_Usuario", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@id", ObjUsuario.PK_VU_Dni);
+            command.Parameters.AddWithValue("@nombre", ObjUsuario.VU_Nombre);
+            command.Parameters.AddWithValue("@apellido", ObjUsuario.VU_Apellidos);
+            command.Parameters.AddWithValue("@celular", ObjUsuario.IU_Celular);
+            command.Parameters.AddWithValue("@fecha", ObjUsuario.DTU_FechaNac);
+            command.Parameters.AddWithValue("@correo", ObjUsuario.VU_Correo);
+            command.Parameters.AddWithValue("@contra", ObjUsuario.VU_Contraseña);
 
             conexion.Open();
-            unComando.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             conexion.Close();
         }
         public bool SelectUsuario(DtoUsuario objuser)

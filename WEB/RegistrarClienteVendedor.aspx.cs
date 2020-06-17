@@ -37,12 +37,17 @@ public partial class RegistrarCliente : System.Web.UI.Page
             _log.CustomWriteOnLog("Registro de usuario", "txtCorreo = " + txtCorreo.Text);
             _log.CustomWriteOnLog("Registro de usuario", "txtContrasenia = " + txtContrasenia.Text);
 
-
+            
             objuser.PK_VU_Dni = txtDNI.Text;
             objuser.VU_Nombre = txtNombres.Text;
             objuser.VU_Apellidos = txtApellidos.Text;
             objuser.IU_Celular = Convert.ToInt32(txtCelular.Text);
-            objuser.DTU_FechaNac = Convert.ToDateTime(txtFechaNacimiento.Text);
+            DateTime a = new DateTime();
+            a = Convert.ToDateTime(txtFechaNacimiento.Text);
+            DateTime b = new DateTime(2019, a.Month, a.Day);
+
+
+            objuser.DTU_FechaNac = Convert.ToDateTime(b.ToString("yyyy-MM-dd hh:mm:ss"));
             objuser.VU_Correo = txtCorreo.Text;
             objuser.VU_Contraseña = txtContrasenia.Text;
 
