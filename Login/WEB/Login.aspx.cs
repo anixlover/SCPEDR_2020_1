@@ -18,18 +18,19 @@ public partial class Login :  System.Web.UI.Page
     {
         conexion = new SqlConnection(ConexionBD.CadenaConexion);
     }
-    DtoUsuario usr = new DtoUsuario();
 
-    public static string GetSHA256(string str)
-    {
-        SHA256 sha256 = SHA256Managed.Create();
-        ASCIIEncoding encoding = new ASCIIEncoding();
-        byte[] stream = null;
-        StringBuilder sb = new StringBuilder();
-        stream = sha256.ComputeHash(encoding.GetBytes(str));
-        for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-        return sb.ToString();
-    }
+        DtoUsuario usr = new DtoUsuario();
+
+    //public static string GetSHA256(string str)
+    //{
+    //    SHA256 sha256 = SHA256Managed.Create();
+    //    ASCIIEncoding encoding = new ASCIIEncoding();
+    //    byte[] stream = null;
+    //    StringBuilder sb = new StringBuilder();
+    //    stream = sha256.ComputeHash(encoding.GetBytes(str));
+    //    for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+    //    return sb.ToString();
+    //}
 
     Log lo = new Log();
     protected void btnLogin_Click(object sender, EventArgs e)
@@ -38,7 +39,7 @@ public partial class Login :  System.Web.UI.Page
         {
             string dni = txtDni.Text;
             string pass = txtContraseña.Text;
-            string epass = GetSHA256(pass);
+            //string epass = GetSHA256(pass);
 
             SqlCommand Comando = new SqlCommand("SELECT PK_VU_Dni, VU_Contrasenia, FK_ITU_Cod FROM T_Usuario WHERE " +
             "PK_VU_Dni = @ID and VU_Contrasenia=@pass ", conexion);
@@ -47,20 +48,23 @@ public partial class Login :  System.Web.UI.Page
             conexion.Open();
             SqlDataReader registro = Comando.ExecuteReader();
 
+            //if (dni == "")
+            //{
+            //    string script = "alert(\"Ingrese Usuario y contraseña\");";
+            //    ScriptManager.RegisterStartupScript(this, GetType(),
+            //                                      "ServerControlScript", script, true);
+            //}
 
-            
-            if (string.IsNullOrEmpty(dni))
-            {
-                throw new Exception("Ingrese su usuario");
-            }
-
-            if (string.IsNullOrEmpty(pass))
-            {
-                throw new Exception("Ingrese su contraseña");
-            }
+            //if (pass == "")
+            //{
+            //    string script = "alert(\"Ingrese su contraseña\");";
+            //    ScriptManager.RegisterStartupScript(this, GetType(),
+            //                                      "ServerControlScript", script, true);
+            //}
 
             if (registro.Read())
             {
+                
                 var rol = registro["FK_ITU_Cod"].ToString();
                 if (rol == "1")     /*cliente*/
                 {
@@ -81,30 +85,30 @@ public partial class Login :  System.Web.UI.Page
                 }
                 else
                 {
-                        string script2 = "alert(\"Usuario o contrseña incorrecta\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(),
-                        "ServerControlScript", script2, true);
-                        Response.Redirect("Login.aspx");
+                    string script2 = "alert(\"Usuario o contrseña incorrecta\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(),
+                    "ServerControlScript", script2, true);
+                    Response.Redirect("Login.aspx");
                 }
-                
+
             }
-            conexion.Close();
+
             //else
             //{
-            //    if (txtDni.Text == "" && txtContraseña.Text == "")
+            //    if (txtDni.Text == null && txtContraseña.Text == null)
             //    {
             //        string script2 = "alert(\"Usuario o contrseña incorrecta\");";
             //        ScriptManager.RegisterStartupScript(this, GetType(),
             //        "ServerControlScript", script2, true);
 
             //    }
-            //    else if (txtContraseña.Text == "")
+            //    else if (txtContraseña.Text == null)
             //    {
             //        string script = "alert(\"Usuario o contrseña incorrecta\");";
             //        ScriptManager.RegisterStartupScript(this, GetType(),
             //        "ServerControlScript", script, true);
             //    }
-            //    else if (txtDni.Text == "")
+            //    else if (txtDni.Text == null)
             //    {
             //        string script = "alert(\"Usuario o contrseña incorrecta\");";
             //        ScriptManager.RegisterStartupScript(this, GetType(),
@@ -117,7 +121,7 @@ public partial class Login :  System.Web.UI.Page
         catch(Exception ex)
         {
             lo.CustomWriteOnLog("login", "Error = " + ex.Message + "stack"+  ex.StackTrace);
-            string script = "alert(\"Error\");";
+            string script = "alert(\"Error,please reload\");";
             ScriptManager.RegisterStartupScript(this, GetType(),
                                               "ServerControlScript", script, true);
         }

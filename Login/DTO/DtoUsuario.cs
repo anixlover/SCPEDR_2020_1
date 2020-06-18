@@ -9,6 +9,7 @@ namespace DTO
     public class DtoUsuario
     {
         public string PK_VU_Dni { get; set; }
+        
         public string VU_Nombre { get; set; }
         public string VU_Apellidos { get; set; }
         public int IU_Celular { get; set; }

@@ -21,13 +21,13 @@
     <form id="form2" runat="server" class="auto-style1">
         <div class="form-id">
 
+           
             <div class="form-id">
-                <%--input codigo--%>
                 <div class="username-input">
                     <label for="exampleInputEmail1" class="label-name">
                         Codigo Usuario
                     </label>
-                    <asp:TextBox ID="txtDni" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDni" required name="dni" CssClass="form-control" runat="server" ></asp:TextBox>
 
                 </div>
                 <%--input pass--%>
@@ -36,7 +36,7 @@
                         Contraseña
 
                     </label>
-                    <asp:TextBox ID="txtContraseña" type="password"
+                    <asp:TextBox ID="txtContraseña" required name="pass" type="password"
                         CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
@@ -54,5 +54,35 @@
                 Text="Ingresar" OnClick="btnLogin_Click" />
         </div>
     </form>
+
+     <script type="text/javascript">
+         function validarInput()
+         {
+             document.getElementById("btnLogin").disabled = !document.getElementById("txtDni").value.length;
+         }
+    </script>
+
+    
+
+    <script type="text/javascript">
+        function solonumeros(n) {
+            key = e.keyCode || e.which;
+            teclado = Int32Array(key);
+            numeros = "0123456789";
+            especiales = "8-37-38-46-146";
+            teclado_especial = false;
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
+                }
+            }
+            if (numeros.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+            }
+
+        }
+    </script>
+
+
 </body>
 </html>
