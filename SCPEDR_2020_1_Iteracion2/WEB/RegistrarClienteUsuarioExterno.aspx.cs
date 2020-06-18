@@ -15,11 +15,11 @@ public partial class RegistrarClienteUsuarioExterno : System.Web.UI.Page
     }
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
-        if (txtDNI.Text == "" | txtNombres.Text == "" | txtApellidos.Text == "" | txtCelular.Text == "" | txtCorreo.Text == "" | txtContraseña.Text == "" | txtFechNac.Text == "")
-        {
-            lblMsje.Text = "COMPLETE EL FORMULARIO!!";
-            return;
-        }
+        //if (txtDNI.Text == "" | txtNombres.Text == "" | txtApellidos.Text == "" | txtCelular.Text == "" | txtCorreo.Text == "" | txtContraseña.Text == "" | txtFechNac.Text == "")
+        //{
+        //    lblMsje.Text = "COMPLETE EL FORMULARIO!!";
+        //    return;
+        //}
         //DtoUsuario objuser = new DtoUsuario(txtDNI.Text, txtNombres.Text, txtApellidos.Text, Convert.ToInt32(txtCelular.Text), Convert.ToDateTime(txtFechNac.Text), txtCorreo.Text, txtContraseña.Text, 1);
         DtoUsuario objuser = new DtoUsuario();
         objuser.PK_VU_Dni = txtDNI.Text;
@@ -52,34 +52,34 @@ public partial class RegistrarClienteUsuarioExterno : System.Web.UI.Page
         Response.Redirect("~/Home.aspx");
     }
 
-    private void msjeRegistrar(DtoUsuario u)
-    {
-        switch (u.error)
-        {
-            case 1:
-                lblMsje.Text = "Nombre(s) invalido";
-                break;
-            case 2:
-                lblMsje.Text = "Apellido(s) invalido";
-                break;
-            case 3:
-                lblMsje.Text = "Correo invalido";
-                break;
-            case 4:
-                lblMsje.Text = "Contraseña muy corta";
-                break;
-            case 5:
-                lblMsje.Text = "DNI [" + u.PK_VU_Dni + "] ya está registrado";
-                break;
-            case 6:
-                lblMsje.Text = "Celular [" + u.IU_Celular + "] ya está registrado";
-                break;
-            case 7:
-                lblMsje.Text = "Correo [" + u.VU_Correo + "] ya está registrado";
-                break;
-            case 77:
-                lblMsje.Text = "REGISTRO EXITOSO!!";
-                break;
-        }
-    }
+    //private void msjeRegistrar(DtoUsuario u)
+    //{
+    //    switch (u.error)
+    //    {
+    //        case 1:
+    //            lblMsje.Text = "Nombre(s) invalido";
+    //            break;
+    //        case 2:
+    //            lblMsje.Text = "Apellido(s) invalido";
+    //            break;
+    //        case 3:
+    //            lblMsje.Text = "Correo invalido";
+    //            break;
+    //        case 4:
+    //            lblMsje.Text = "Contraseña muy corta";
+    //            break;
+    //        case 5:
+    //            lblMsje.Text = "DNI [" + u.PK_VU_Dni + "] ya está registrado";
+    //            break;
+    //        case 6:
+    //            lblMsje.Text = "Celular [" + u.IU_Celular + "] ya está registrado";
+    //            break;
+    //        case 7:
+    //            lblMsje.Text = "Correo [" + u.VU_Correo + "] ya está registrado";
+    //            break;
+    //        case 77:
+    //            lblMsje.Text = "REGISTRO EXITOSO!!";
+    //            break;
+    //    }
+    //}
 }

@@ -33,9 +33,12 @@
     <link rel="stylesheet" href="css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald&family=PT+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <%--<link href="https://kit.fontawesome.com/ce7e303de7.js" rel="stylesheet" />--%>
 
+    <%--<link href="css/stylelogin.css" rel="stylesheet" />--%>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
 
+    <link rel="stylesheet" href= "https://kit.fontawesome.com/ce7e303de7.js" />
     <meta name="theme-color" content="#fafafa">
 </head>
 
@@ -95,19 +98,50 @@
     <section class="seccion contenedor clearfix">
         <h2>Registrar Cliente</h2>
         <div class="registrar-cliente">
-            <asp:Label ID="lblMsje" runat="server" EnableTheming ="True" ForeColor="White" Text="..."></asp:Label>
-            <asp:TextBox ID="txtDNI" runat="server" class="controls" type="text" placeholder="DNI"></asp:TextBox>
-            <asp:TextBox ID="txtNombres" runat="server" class="controls" type="text" placeholder="Nombres"></asp:TextBox>
-            <asp:TextBox ID="txtApellidos" runat="server" class="controls" type="text" placeholder="Apellidos"></asp:TextBox>
-            <asp:TextBox ID="txtCelular" runat="server" class="controls" type="number" placeholder="Celular"></asp:TextBox>
-            <asp:TextBox ID="txtFechNac" runat="server" class="controls" type="date" placeholder="Fecha de nacimiento"></asp:TextBox>
-            <asp:TextBox ID="txtCorreo" runat="server" class="controls" type="text" placeholder="Correo electronico"></asp:TextBox>
-            <asp:TextBox ID="txtContraseña" runat="server" class="controls" type="password" placeholder="Contraseña"></asp:TextBox>
-            <div class="salto">
-                <asp:Button ID="btnRegistrar" runat="server" class="btn-ghost" Text="Registrar" OnClick="btnRegistrar_Click"></asp:Button>
-            <asp:Button ID="btnCancelar" runat="server" class="btn-ghost" Text="Cancelar" OnClick="btnCancelar_Click"></asp:Button>
+
+            <div class="formulario">
+
+                <div class="formulario">
+                    <div class="entrada">
+                        <i class="fas fa-id-card icon"></i>
+                        <asp:TextBox ID="txtDNI" required name="texto" runat="server" class="controls" type="text" placeholder="DNI"></asp:TextBox>
+                    </div>
+                    <div class="entrada">
+                        <i class="fas fa-user icon"></i>
+                        <asp:TextBox ID="txtNombres" required name="texto" runat="server" class="controls" type="text" placeholder="Nombres"></asp:TextBox>
+                    </div>
+                    <div class="entrada">
+                        <i class="fas fa-user icon"></i>
+                        <asp:TextBox ID="txtApellidos" required name="texto" runat="server" class="controls" type="text" placeholder="Apellidos"></asp:TextBox>
+                    </div>
+                    <div class="entrada">
+                        <i class="fas fa-mobile-alt icon"></i>
+                        <asp:TextBox ID="txtCelular" required name="texto" runat="server" class="controls" type="number" placeholder="Celular"></asp:TextBox>
+                    </div>
+                    <div class="entrada">
+                        <i class="fas fa-calendar-alt icon"></i>
+                        <asp:TextBox ID="txtFechNac" required name="texto" runat="server" class="controls" type="date" placeholder="mm/dd/yyyy"></asp:TextBox>
+                    </div>
+                    <div class="entrada">
+                        <i class="fas fa-envelope icon"></i>
+                        <asp:TextBox ID="txtCorreo" required name="texto" runat="server" class="controls" type="text" placeholder="Correo electronico"></asp:TextBox>
+                    </div>
+                    <div class="entrada">
+                        <i class="fas fa-lock icon"></i>
+                        <asp:TextBox ID="txtContraseña" required name="texto" runat="server" class="controls" type="password" placeholder="Contraseña"></asp:TextBox>
+                    </div>
+                    <div class="salto">
+                    </div>
+                    <div class="salto">
+
+                        <asp:Button ID="Button1" runat="server" class="btn-ghost" Text="Registrar"
+                            OnClick="btnRegistrar_Click"></asp:Button>
+                        <asp:Button ID="Button2" runat="server" class="btn-ghost" Text="Cancelar" 
+                            OnClick="btnCancelar_Click"></asp:Button>
+                      
+                    </div>
+                </div>
             </div>
-            
         </div>
     </section>
 

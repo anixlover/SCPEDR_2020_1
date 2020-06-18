@@ -684,17 +684,55 @@ div.descripcion-moldura {
     text-align: center;
 }
 
-    .registrar-cliente :indeterminate{
+    .registrar-cliente :indeterminate {
         text-align: left;
     }
-.registrar-cliente ::after {
+
+    .registrar-cliente ::after {
+        white-space: normal;
+    }
+
+.salto ::before {
     white-space: normal;
 }
-.salto ::before{
-    white-space:normal;
+
+.formulario {
+    background: #fdfbfb;
+    padding: 21px;
+}
+
+.controls {
+    font-size: 15px;
+    padding: 5px;
+    border: 0;
+}
+
+.entrada {
+    margin-bottom: 10px;
+    border: 1px solid #aaa;
 }
 
 
+.icon {
+    min-width: 50px;
+    text-align: center;
+    color: #999;
+}
+
+.btn-ghost {
+    border: 0;
+    width: 100px;
+    color: white;
+    font-size: 20px;
+    background-color: #59191E;
+    padding: 10px 10px;
+    /*border-radius: 5px;*/
+    cursor: pointer;
+}
+
+    .btn-ghost:hover {
+        background: rgba(4, 4, 4, 0.66)
+    }
 
 
 

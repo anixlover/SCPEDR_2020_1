@@ -94,7 +94,6 @@
         
         <asp:Image ID="Image1" Height="370px" Width="450px" runat="server" class="rounded" />
                     
-        
         <p>Medida:<asp:Label ID="txtmedida" runat="server"></asp:Label></p>
         <p><asp:Label ID="txtmetrica" runat="server"></asp:Label></p>
         <p>Precio: S./<asp:Label ID="txtprecio" runat="server"></asp:Label></p>
