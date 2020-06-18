@@ -12,7 +12,11 @@ public partial class RegistrarClienteVendedor : System.Web.UI.Page
     Log _log = new Log();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Page.IsPostBack)
+        {
+            _log.CustomWriteOnLog("Registro de usuario", "_______________________________________________________________________________ENTRO A FUNCION REGISTRAR_____________________________________________________________________");
 
+        }
     }
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {

@@ -210,7 +210,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_Js" Runat="Server">
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="../../plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
-    <%--<script src="../../plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>--%>
+    <script src="../../plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script>
         $(function () {
             var $demoMaskedInput = $('.demo-masked-input');
