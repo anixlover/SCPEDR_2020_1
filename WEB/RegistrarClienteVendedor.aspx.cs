@@ -16,12 +16,14 @@ public partial class RegistrarCliente : System.Web.UI.Page
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
-        if (txtDNI.Text == "" | txtNombres.Text == "" | txtApellidos.Text == "" | txtCelular.Text == "" | txtCorreo.Text == "" | txtContraseña.Text == "" | txtFechNac.Text == "")
+        if (txtDNI.Text == "" | txtNombres.Text == "" | txtApellidos.Text == "" | txtCelular.Text == ""
+            | txtCorreo.Text == "" | txtContraseña.Text == "" | txtFechNac.Text == "")
         {
             lblMsje.Text = "COMPLETE EL FORMULARIO!!";
             return;
         }
-        //DtoUsuario objuser = new DtoUsuario(txtDNI.Text, txtNombres.Text, txtApellidos.Text, Convert.ToInt32(txtCelular.Text), Convert.ToDateTime(txtFechNac.Text), txtCorreo.Text, txtContraseña.Text, 1);
+        //DtoUsuario objuser = new DtoUsuario(txtDNI.Text, txtNombres.Text, txtApellidos.Text, 
+        //Convert.ToInt32(txtCelular.Text), Convert.ToDateTime(txtFechNac.Text), txtCorreo.Text, txtContraseña.Text, 1);
         DtoUsuario objuser = new DtoUsuario();
         objuser.PK_VU_Dni = txtDNI.Text;
         objuser.VU_Nombre = txtNombres.Text;

@@ -18,7 +18,11 @@ namespace DAO
                 //Conexion Marcial
                 //return @"data source=LAPTOP-UEI1JFVM; initial catalog=BD_SCPEDR; integrated security=SSPI;";
                 //Conexion Marcial
-                return @"data source=HELLO; initial catalog=BD_SCPEDR; integrated security=SSPI;";
+                //return @"data source=HELLO; initial catalog=BD_SCPEDR; integrated security=SSPI;";
+
+                return @"data source=DESKTOP-IAELG6V\\SQLEXPRESS; initial catalog=BD_SCPEDR; integrated security=SSPI;";
+                //4lv4r0
+                
 
             }
         }

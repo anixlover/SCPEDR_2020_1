@@ -19,7 +19,10 @@ namespace DAO
         }
         public void InsertarCliente(DtoUsuario ObjUsuario)
         {
-            string Insertar = "INSERT T_Usuario(PK_VU_Dni,VU_Nombre,VU_Apellidos,IU_Celular,DTU_FechaNac,VU_Correo,VU_Contrasenia,FK_ITU_Cod) VALUES(" + ObjUsuario.PK_VU_Dni + ",'" + ObjUsuario.VU_Nombre + "','" + ObjUsuario.VU_Apellidos + "'," + ObjUsuario.IU_Celular + ",'" + ObjUsuario.DTU_FechaNac + "','" + ObjUsuario.VU_Correo + "','" + ObjUsuario.VU_Contraseña + "',1)";
+            string Insertar = "INSERT T_Usuario(PK_VU_Dni,VU_Nombre,VU_Apellidos,IU_Celular," +
+                "DTU_FechaNac,VU_Correo,VU_Contrasenia,FK_ITU_Cod) VALUES(" + ObjUsuario.PK_VU_Dni + ",'" + ObjUsuario.VU_Nombre +
+                "','" + ObjUsuario.VU_Apellidos + "'," + ObjUsuario.IU_Celular + ",'" + ObjUsuario.DTU_FechaNac + "','" 
+                + ObjUsuario.VU_Correo + "','" + ObjUsuario.VU_Contraseña + "',1)";
 
             SqlCommand unComando = new SqlCommand(Insertar, conexion);
 
